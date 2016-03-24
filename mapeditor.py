@@ -12,36 +12,19 @@ class TextureList(Frame):
 
 
 class Application(Frame):
-    def say_hi(self):
-        print self.message
-
-    def create_widgets(self):
-        self.QUIT["text"] = "QUIT"
-        self.QUIT["fg"] = "red"
-        self.QUIT["command"] = self.quit
-
-        self.QUIT.pack({"side": "left"})
-
-        self.hi_there["text"] = "Hello",
-        self.hi_there["command"] = self.say_hi
-
-        self.hi_there.pack({"side": "left"})
-
     def __init__(self,  master=None):
         Frame.__init__(self, master)
 
         self.texture_listbox = TextureList(self)
 
-        self.QUIT = Button(self)
-        self.hi_there = Button(self)
+        self.QUIT = Button(self, text='QUIT', fg='red', command=self.quit)
+        self.QUIT.pack(side='bottom')
 
-        self.texture_listbox.pack(side='top')
+        self.texture_listbox.pack(side='left')
         self.pack()
-        self.create_widgets();
 
 
 root = Tk()
 app = Application(master=root)
 
 app.mainloop()
-root.destroy()
